@@ -29,8 +29,8 @@ npm start
 
 `http://localhost:3000/posts/{id}`
 
-* First time this page is requested for an ID, the post is fetched from server.
-* If page was requested before for some ID, a cached version is served.
+* On the first time this page is requested for an ID, the post is fetched from server.
+* If page was already requested before for an ID, a cached version is served.
 * Every 60s, all previously requested posts are fetched again from the server.
 
 
