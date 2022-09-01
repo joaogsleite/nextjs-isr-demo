@@ -9,15 +9,17 @@ https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regenera
 
 `http://localhost:3000/posts/{id}`
 
-Everytime this page is requested, a cached version is served.
+First time this page is requested for an ID, the post is fetched from server.
 
-Every 60s, the post is fetched from the server.
+If page was requested before for some ID, a cached version is served.
+
+Every 60s, all previously requested posts are fetched again from the server.
 
 ### API
 
 `http://localhost:3000/api/revalidate/{id}`
 
-Call this endpoint to force update the post.
+Call this endpoint to force update a post.
 
 The post is fetched again from the server and the cache is updated.
 
