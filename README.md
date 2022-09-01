@@ -1,21 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Incremental Static Regeneration
+## NextJS Incremental Static Regeneration Demo
 
 https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration
+
+
+## NextJS
+
+### Pages
+
+`http://localhost:3000/posts/{id}`
+
+Everytime this page is requested, a cached version is served.
+
+Every 60s, the post is fetched from the server.
+
+### API
+
+`http://localhost:3000/api/revalidate/{id}`
+
+Call this endpoint to force update the post.
+
+The post is fetched again from the server and the cache is updated.
+
+## Server
+
+NodeJS Express server project in folder `./server`.
+
+### Endpoints:
+
+`http://localhost:3001/posts`
+
+`http://localhost:3001/posts/{id}`
+
+### Data
+
+Posts returned live inside `./server/data/` folder.
+
+Each post is a JSON file. 
+
+The name of the JSON file is the post id.
