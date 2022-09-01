@@ -1,42 +1,58 @@
-## NextJS Incremental Static Regeneration Demo
+# NextJS Incremental Static Regeneration Demo
 
 https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration
 
 
-## NextJS
+## Usage
 
-### Pages
+Server
+
+```
+cd server
+npm install
+npm run dev
+```
+
+NextJS
+
+```
+npm install
+npm run build
+npm start
+```
+
+
+## Project description
+
+
+### NextJS
 
 `http://localhost:3000/posts/{id}`
 
-First time this page is requested for an ID, the post is fetched from server.
+* First time this page is requested for an ID, the post is fetched from server.
+* If page was requested before for some ID, a cached version is served.
+* Every 60s, all previously requested posts are fetched again from the server.
 
-If page was requested before for some ID, a cached version is served.
-
-Every 60s, all previously requested posts are fetched again from the server.
-
-### API
 
 `http://localhost:3000/api/revalidate/{id}`
 
-Call this endpoint to force update a post.
+* Call this endpoint to force update a post.
+* The post is fetched again from the server and the cache is updated.
 
-The post is fetched again from the server and the cache is updated.
 
-## Server
+### Server
 
 NodeJS Express server project in folder `./server`.
 
-### Endpoints:
+Endpoints:
 
-`http://localhost:3001/posts`
+* `http://localhost:3001/posts`
 
-`http://localhost:3001/posts/{id}`
+* `http://localhost:3001/posts/{id}`
 
-### Data
 
-Posts returned live inside `./server/data/` folder.
+Data: 
 
-Each post is a JSON file. 
-
-The name of the JSON file is the post id.
+* Posts returned live inside `./server/data/` folder.
+* Each post is a JSON file. 
+* The name of the JSON file is the post id.
